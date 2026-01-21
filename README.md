@@ -76,7 +76,7 @@ The database schema is designed to handle Many-to-Many relationships between Stu
 
 3.  **Run the Application**
     * Open the project in IntelliJ IDEA or Eclipse.
-    * Run `Main.java`.
+    * Run `Laucher.java`.
 
 ## 🧠 What I Learned
 
