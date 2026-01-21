@@ -1,0 +1,303 @@
+/* --- GLOBAL CONFIG --- */
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f6f8; /* Nền xám xanh nhạt hiện đại */
+}
+
+/* --- COLOR PALETTE --- */
+* {
+    -color-primary: #3498db;
+    -color-primary-dark: #2980b9;
+    -color-success: #2ecc71;
+    -color-success-dark: #27ae60;
+    -color-danger: #e74c3c;
+    -color-danger-dark: #c0392b;
+    -color-text-dark: #2c3e50;
+    -color-text-light: #7f8c8d;
+    -color-white: #ffffff;
+    -color-border: #dfe6e9;
+}
+
+/* --- TYPOGRAPHY --- */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -color-text-dark;
+    -fx-padding: 0 0 15 0;
+}
+
+.header-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -color-text-dark;
+}
+
+/* --- CARDS (CARD LAYOUT & SPACING) --- */
+.card, .dashboard-stat-card {
+    -fx-background-color: -color-white;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 15, 0, 0, 4);
+    -fx-padding: 25;
+    -fx-spacing: 10;
+}
+
+.card:hover, .dashboard-stat-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 20, 0, 0, 6);
+    -fx-translate-y: -2;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-light;
+    -fx-border-color: transparent transparent -color-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 0 10 0;
+    -fx-margin: 0 0 10 0;
+}
+
+.stat-number {
+    -fx-font-size: 36px;
+    -fx-font-weight: 800;
+    -fx-text-fill: -color-primary;
+}
+
+.stat-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-text-light;
+}
+
+/* --- BUTTONS (Material Design) --- */
+.button {
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);
+    -fx-transition: all 0.2s;
+}
+.button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
+    -fx-translate-y: -1;
+}
+.button:pressed {
+    -fx-translate-y: 1;
+    -fx-effect: none;
+}
+
+.button-primary, .action-button, .login-btn-primary {
+    -fx-background-color: -color-primary;
+    -fx-text-fill: -color-white;
+}
+.button-primary:hover, .action-button:hover, .login-btn-primary:hover { -fx-background-color: -color-primary-dark; }
+
+.button-success {
+    -fx-background-color: -color-success;
+    -fx-text-fill: -color-white;
+}
+.button-success:hover { -fx-background-color: -color-success-dark; }
+
+.button-danger, .logout-button {
+    -fx-background-color: -color-danger;
+    -fx-text-fill: -color-white;
+}
+.button-danger:hover, .logout-button:hover { -fx-background-color: -color-danger-dark; }
+
+/* Student Nav Button (Big Card Button) */
+.student-nav-btn {
+    -fx-background-color: -color-white;
+    -fx-text-fill: -color-text-dark;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-border-color: -color-border;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 20 30;
+    -fx-min-width: 220px;
+    -fx-min-height: 80px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 8, 0, 0, 3);
+}
+.student-nav-btn:hover {
+    -fx-background-color: -color-white;
+    -fx-border-color: -color-primary;
+    -fx-text-fill: -color-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.2), 12, 0, 0, 4);
+    -fx-translate-y: -2;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    -fx-background-color: -color-text-dark;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 15 25;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent transparent transparent rgba(255,255,255,0.1);
+    -fx-border-width: 0 0 1 0;
+    -fx-cursor: hand;
+    -fx-pref-width: 260;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-color: -color-primary;
+    -fx-border-width: 0 0 0 4;
+    -fx-padding: 15 21; /* Bù lại border left */
+    -fx-text-fill: -color-white;
+}
+
+.sidebar-divider {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 11px;
+    -fx-font-weight: 800;
+    -fx-padding: 25 25 10 25;
+    -fx-text-transform: uppercase;
+    -fx-letter-spacing: 1px;
+}
+
+/* --- TABLE VIEW (Clean & Modern) --- */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 0; /* Xóa padding trong */
+}
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: -color-border;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 50px; /* Header cao hơn */
+}
+.table-view .column-header .label {
+    -fx-text-fill: -color-text-light;
+    -fx-font-weight: 700;
+    -fx-font-size: 12px;
+    -fx-text-transform: uppercase;
+    -fx-alignment: CENTER_LEFT;
+}
+.table-view .table-cell {
+    -fx-text-fill: -color-text-dark;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-color: transparent;
+    -fx-padding: 0 10 0 15;
+}
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #f4f6f8; /* Đường kẻ mờ giữa các dòng */
+    -fx-cell-size: 45px; /* Dòng cao thoáng */
+}
+.table-row-cell:hover {
+    -fx-background-color: #f8f9fa; /* Hover rất nhẹ */
+}
+.table-row-cell:selected {
+    -fx-background-color: #e8f4fd; /* Selected màu xanh nhạt hiện đại */
+    -fx-background-insets: 0;
+}
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: -color-primary; /* Text đổi màu xanh */
+    -fx-font-weight: bold;
+}
+/* Ẩn scrollbar ngang nếu không cần */
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent;
+}
+
+/* --- INPUTS --- */
+.text-field, .combo-box, .date-picker, .password-field, .text-area {
+    -fx-background-color: -color-white;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10;
+    -fx-prompt-text-fill: #b2bec3;
+}
+.text-field:focused, .combo-box:focused, .date-picker:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: -color-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.2), 5, 0, 0, 0);
+}
+
+/* --- LOGIN SCREEN --- */
+.login-root-bg {
+    -fx-background-color: linear-gradient(to bottom right, #2980b9, #2c3e50);
+}
+.login-card {
+    -fx-background-color: -color-white;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 30, 0, 0, 15);
+}
+.login-left-side {
+    -fx-background-color: -color-primary;
+    -fx-background-radius: 16px 0 0 16px;
+    -fx-background-image: url("pattern.png"); /* Nếu có ảnh pattern mờ */
+}
+
+/* --- STATUS LABELS --- */
+.status-label-error {
+    -fx-text-fill: -color-danger;
+    -fx-font-weight: bold;
+    -fx-graphic: url("error_icon.png"); /* Có thể thêm icon nếu muốn */
+}
+.status-label-success {
+    -fx-text-fill: -color-success;
+    -fx-font-weight: bold;
+}
+
+/* --- ICON BUTTON (Hamburger) --- */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-text-dark;
+    -fx-font-size: 22px;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+.icon-button:hover {
+    -fx-background-color: -color-border;
+    -fx-background-radius: 4px;
+}
+/* Combo Box To & Rõ (dùng trong Tạo lớp NV) */
+.combo-box-large {
+    -fx-font-size: 14px;
+    -fx-pref-height: 45px; /* Cao hơn bình thường */
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 5 10;
+}
+.combo-box-large .list-cell {
+    -fx-padding: 10 15; /* Padding cho item bên trong */
+}
+
+/* Text Area To & Rõ */
+.text-area-large {
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #bdc3c7;
+}
+.text-area-large:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.2), 8, 0, 0, 0);
+}
+
+/* Style riêng cho nút gửi trong dialog */
+.button-primary {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 40px;
+}

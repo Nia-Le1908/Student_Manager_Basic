@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="rootPane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <BorderPane>
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="15.0" styleClass="header-bar" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+               <children>
+                  <Button fx:id="btnMenu" mnemonicParsing="false" onAction="#toggleSidebar" styleClass="icon-button" text="☰" />
+                  <Label fx:id="lblWelcome" styleClass="header-title" text="Hệ Thống Quản Lý Điểm" HBox.hgrow="ALWAYS" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#thoatChuongTrinh" styleClass="logout-button" text="🚪 Đăng xuất" />
+               </children>
+            </HBox>
+         </top>
+         
+         <center>
+            <AnchorPane>
+               <children>
+                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <VBox spacing="30.0" style="-fx-background-color: transparent;">
+                           <padding>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </padding>
+                           <children>
+            
+                              <!-- ADMIN DASHBOARD -->
+                              <VBox fx:id="adminSection" managed="false" spacing="20.0" visible="false">
+                                 <children>
+                                    <Label styleClass="title-label" text="Tổng Quan Hệ Thống" />
+                                    
+                                    <GridPane hgap="20.0" vgap="20.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.33" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.33" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.33" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <VBox styleClass="dashboard-stat-card">
+                                             <children>
+                                                <Label fx:id="lblPendingWishlists" styleClass="stat-number" text="0" />
+                                                <Label styleClass="stat-label" text="Lớp nguyện vọng mới" />
+                                                <Button onAction="#moDuyetLopNguyenVong" styleClass="button-primary" text="Xem chi tiết" />
+                                             </children>
+                                          </VBox>
+                                          <VBox styleClass="dashboard-stat-card" GridPane.columnIndex="1">
+                                             <children>
+                                                <Label fx:id="lblTotalStudents" styleClass="stat-number" text="0" />
+                                                <Label styleClass="stat-label" text="Tổng số Sinh viên" />
+                                                <Button onAction="#moQuanLySinhVien" styleClass="button-primary" text="Quản lý" />
+                                             </children>
+                                          </VBox>
+                                          <VBox styleClass="dashboard-stat-card" GridPane.columnIndex="2">
+                                             <children>
+                                                <Label fx:id="lblTotalLecturers" styleClass="stat-number" text="0" />
+                                                <Label styleClass="stat-label" text="Tổng số Giảng viên" />
+                                                <Button onAction="#moQuanLyGiangVien" styleClass="button-primary" text="Quản lý" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </GridPane>
+                                    
+                                     <VBox styleClass="card" VBox.vgrow="ALWAYS">
+                                         <children>
+                                             <Label styleClass="card-title" text="Thống kê Sinh viên theo Khoa" />
+                                             <PieChart fx:id="adminPieChart" legendSide="RIGHT" minHeight="350.0" title="" VBox.vgrow="ALWAYS" />
+                                         </children>
+                                     </VBox>
+                                 </children>
+                              </VBox>
+            
+                              <!-- GIANG VIEN DASHBOARD -->
+                              <VBox fx:id="giangVienSection" managed="false" spacing="20.0" visible="false" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="title-label" text="Lớp Học Phần Phụ Trách" />
+                                    
+                                    <VBox spacing="15" styleClass="card" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="15">
+                                             <children>
+                                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Danh sách lớp được phân công" />
+                                                <Region HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="btnRefreshGVData" mnemonicParsing="false" onAction="#refreshGiangVienData" styleClass="button-primary" text="🔄 Làm mới" />
+                                                <!-- NÚT TẠO YÊU CẦU ĐÃ ĐƯỢC XÓA KHỎI ĐÂY -->
+                                             </children>
+                                          </HBox>
+                                          
+                                          <Separator />
+                                          
+                                          <Label style="-fx-font-style: italic; -fx-text-fill: #7f8c8d;" text="Mẹo: Nhấp đúp (Double-click) vào dòng lớp học để mở bảng nhập điểm chi tiết." />
+                                          
+                                          <TableView fx:id="tablePhanCong" VBox.vgrow="ALWAYS">
+                                             <columns>
+                                                <TableColumn fx:id="colMaMon" prefWidth="100.0" text="Mã Môn" />
+                                                <TableColumn fx:id="colTenMon" prefWidth="250.0" text="Tên Môn Học" />
+                                                <TableColumn fx:id="colMaLop" prefWidth="180.0" text="Lớp / Tên Lớp NV" />
+                                                <TableColumn fx:id="colHocKy" prefWidth="60.0" style="-fx-alignment: CENTER;" text="HK" />
+                                                <TableColumn fx:id="colNamHoc" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Năm" />
+                                                <TableColumn fx:id="colTrangThai" prefWidth="120.0" text="Trạng Thái" />
+                                             </columns>
+                                             <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+            
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  
+                  <AnchorPane fx:id="sidebarPane" prefWidth="260.0" styleClass="sidebar" translateX="-260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox fx:id="sidebarVBox" spacing="5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                           <children>
+                              <Label styleClass="sidebar-divider" text="CHỨC NĂNG CHUNG" />
+                              <Button fx:id="btnQuanLySinhVien" mnemonicParsing="false" onAction="#moQuanLySinhVien" styleClass="sidebar-button" text="👥 Quản lý Sinh viên" />
+                              <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#moThongKe" styleClass="sidebar-button" text="📊 Thống kê &amp; Báo cáo" />
+                              
+                              <Separator managed="false" visible="false">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </Separator>
+                              
+                              <Label fx:id="lblAdminTitle" managed="false" styleClass="sidebar-divider" text="QUẢN TRỊ VIÊN" visible="false" />
+                              <Button fx:id="btnQuanLyKhoa" managed="false" mnemonicParsing="false" onAction="#moQuanLyKhoa" styleClass="sidebar-button" text="🏢 Quản lý Khoa" visible="false" />
+                              <Button fx:id="btnQuanLyGiangVien" managed="false" mnemonicParsing="false" onAction="#moQuanLyGiangVien" styleClass="sidebar-button" text="👨‍🏫 Quản lý Giảng viên" visible="false" />
+                              <Button fx:id="btnQuanLyMonHoc" managed="false" mnemonicParsing="false" onAction="#moQuanLyMonHoc" styleClass="sidebar-button" text="📚 Quản lý Môn học" visible="false" />
+                              <Button fx:id="btnPhanCongLop" managed="false" mnemonicParsing="false" onAction="#moPhanCongLop" styleClass="sidebar-button" text="📅 Phân công Lớp" visible="false" />
+                              <Button fx:id="btnQuanLyLopHC" managed="false" mnemonicParsing="false" onAction="#moQuanLyLopHC" styleClass="sidebar-button" text="🏫 Quản lý Lớp HC" visible="false" />
+                              <Button fx:id="btnQuanLyKyHoc" managed="false" mnemonicParsing="false" onAction="#moQuanLyKyHoc" styleClass="sidebar-button" text="⏳ Quản lý Kỳ Học" visible="false" />
+                              
+                              <Button fx:id="btnDuyetLopNguyenVong" managed="false" mnemonicParsing="false" onAction="#moDuyetLopNguyenVong" styleClass="sidebar-button" text="📩 Duyệt Nguyện Vọng" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

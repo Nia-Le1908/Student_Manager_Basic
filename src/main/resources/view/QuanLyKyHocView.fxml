@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyKyHocController">
+   <top>
+      <Label styleClass="title-label" text="QUẢN LÝ KỲ HỌC &amp; THỜI GIAN NHẬP ĐIỂM" BorderPane.alignment="CENTER">
+         <padding><Insets bottom="10" top="10" /></padding>
+      </Label>
+   </top>
+   <center>
+      <VBox spacing="15">
+         <padding><Insets bottom="20" left="20" right="20" top="10" /></padding>
+         
+         <!-- Form -->
+         <GridPane hgap="10" style="-fx-background-color: #f0f0f0; -fx-padding: 15; -fx-background-radius: 5;" vgap="10">
+            <columnConstraints>
+               <ColumnConstraints halignment="RIGHT" minWidth="100" />
+               <ColumnConstraints hgrow="ALWAYS" prefWidth="150" />
+               <ColumnConstraints halignment="RIGHT" minWidth="120" />
+               <ColumnConstraints hgrow="ALWAYS" prefWidth="150" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            
+            <Label text="Học Kỳ:" />
+            <!-- SỬA: Dùng ComboBox thay vì TextField -->
+            <ComboBox fx:id="cbHocKy" prefWidth="150.0" promptText="Chọn kỳ" GridPane.columnIndex="1" />
+            
+            <Label text="Năm Học:" GridPane.columnIndex="2" />
+            <!-- SỬA: Dùng ComboBox thay vì TextField -->
+            <ComboBox fx:id="cbNamHoc" prefWidth="150.0" promptText="Chọn năm" GridPane.columnIndex="3" />
+            
+            <Label text="Mở Nhập Điểm:" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpBatDau" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+            <Label text="Đóng Nhập Điểm:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpKetThuc" prefWidth="200" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            
+            <HBox spacing="10" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+               <Button onAction="#handleThem" styleClass="button-primary" text="Thêm Mới" />
+               <Button onAction="#handleSua" styleClass="action-button" text="Cập Nhật Thời Gian" />
+               <Button onAction="#handleXoa" styleClass="button-danger" text="Xóa" />
+               <Button onAction="#handleLamMoi" text="Làm Mới" />
+            </HBox>
+         </GridPane>
+         
+         <Label fx:id="lblStatus" managed="false" styleClass="status-label-error" visible="false" />
+
+         <!-- Table -->
+         <TableView fx:id="tableKyHoc" VBox.vgrow="ALWAYS">
+             <columns>
+                <TableColumn fx:id="colHocKy" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Học Kỳ" />
+                <TableColumn fx:id="colNamHoc" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Năm Học" />
+                <TableColumn fx:id="colBatDau" prefWidth="200.0" text="Ngày Mở Nhập Điểm" />
+                <TableColumn fx:id="colKetThuc" prefWidth="200.0" text="Hạn Chót Nhập Điểm" />
+             </columns>
+             <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+             </columnResizePolicy>
+         </TableView>
+      </VBox>
+   </center>
+</BorderPane>
