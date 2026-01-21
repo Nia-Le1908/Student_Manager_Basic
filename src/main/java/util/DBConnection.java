@@ -14,7 +14,7 @@ public class DBConnection {
             HikariConfig config = new HikariConfig();
             config.setJdbcUrl("jdbc:mysql://localhost:3306/quanlydiem2?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8");
             config.setUsername("root");
-            config.setPassword("123528");
+            config.setPassword("YOUR_PASSWORD");
             
             // Tối ưu hóa hiệu năng
             config.addDataSourceProperty("cachePrepStmts", "true");
@@ -40,4 +40,5 @@ public class DBConnection {
             dataSource.close();
         }
     }
+
 }
